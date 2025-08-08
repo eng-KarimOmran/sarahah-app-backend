@@ -1,4 +1,4 @@
-import userModel from "../DB/models/user.mode.js";
+import userModel from "../DB/models/user.model.js";
 import { findById, findOne } from "../DB/servicesDB.js";
 import createError from "../utility/createError.js";
 

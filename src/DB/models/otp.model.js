@@ -1,4 +1,10 @@
 import { model, Schema } from "mongoose";
+export const OTP_TYPES = {
+  EMAIL_CONFIRMATION: "email-confirmation",
+  RESET_PASSWORD: "reset-password",
+};
+
+Object.freeze(OTP_TYPES);
 
 const schema = new Schema({
   otp: {
@@ -10,16 +16,12 @@ const schema = new Schema({
     required: true,
     ref: "users",
   },
-  attempts: {
+  otpAttemptCount: {
     type: Number,
     default: 0,
   },
-  lastAttemptDate: {
+  unblockDate: {
     type: Date,
-  },
-  isBlocked: {
-    type: Boolean,
-    default: false,
   },
   expiresAt: {
     type: Date,
@@ -27,7 +29,7 @@ const schema = new Schema({
   typeOtp: {
     type: String,
     required: true,
-    enum: ["Email confirmation", "Reset password", "Two factor authentication"],
+    enum: [...Object.values(OTP_TYPES)],
   },
 });
 

@@ -8,7 +8,6 @@ const generateEmailTemplate = ({
   const expiryOtp = "2 minutes";
   const parts = username.trim().split(" ");
   const name = parts[0] + (parts[1] ? " " + parts[1] : "");
-
   return `
     <!DOCTYPE html>
     <html lang="en">

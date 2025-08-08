@@ -29,6 +29,6 @@ export const verifyOtp = joi.object({
 
 export const changePasswordValidation = joi.object({
   email: userSchema.email.required(),
-  password: userSchema.password.required(),
-  passwordToken:authSchema.token
+  newPassword: userSchema.password.required(),
+  password_token: authSchema.token,
 });

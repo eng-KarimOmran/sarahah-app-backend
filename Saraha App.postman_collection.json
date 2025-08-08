@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"fullName\": \"Kareem Omran\",\r\n    \"email\": \"802ac547e1@emailwww.pro\",\r\n    \"password\": \"12345678\"\r\n}",
+							"raw": "{\r\n    \"fullName\": \"Kareem Omran\",\r\n    \"email\": \"5c8e68e0b2@emailwww.pro\",\r\n    \"password\": \"12345678\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -31,141 +31,6 @@
 							"path": [
 								"auth",
 								"signup"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "resendOtp",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"aa38f1e680@emailwww.pro\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{host}}/auth/resend-otp?typeOtp=Reset password",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"auth",
-								"resend-otp"
-							],
-							"query": [
-								{
-									"key": "typeOtp",
-									"value": "Email confirmation",
-									"disabled": true
-								},
-								{
-									"key": "typeOtp",
-									"value": "Reset password"
-								},
-								{
-									"key": "",
-									"value": "",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "verifyOtp",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"802ac547e1@emailwww.pro\",\r\n    \"otp\": \"916843\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{host}}/auth/verify-otp?typeOtp=Reset password",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"auth",
-								"verify-otp"
-							],
-							"query": [
-								{
-									"key": "typeOtp",
-									"value": "Email confirmation",
-									"disabled": true
-								},
-								{
-									"key": "typeOtp",
-									"value": "Reset password"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "resetPassword",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"802ac547e1@emailwww.pro\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{host}}/auth/reset-password",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"auth",
-								"reset-password"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "changePassword",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"802ac547e1@emailwww.pro\",\r\n    \"password\": \"123456789\",\r\n    \"passwordToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTRlN2M3YWMxMzBiZmM5NGJlZjM5NyIsImlhdCI6MTc1NDU5MTI1NywiZXhwIjoxNzU0NTkyMTU3fQ.kEyekwkpSvhy31VUxltUT_Dnp5h73qBZUImkEeYIvRs\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{host}}/auth/change-password",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"auth",
-								"change-password"
 							]
 						}
 					},
@@ -193,6 +58,158 @@
 							"path": [
 								"auth",
 								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "emailConfirmation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"5c8e68e0b2@emailwww.pro\",\r\n    \"otp\": \"955068\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/auth/verify-otp/email-confirmation",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"verify-otp",
+								"email-confirmation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "resendEmailOtp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"5c8e68e0b2@emailwww.pro\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/auth/resend-otp/email-confirmation",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"resend-otp",
+								"email-confirmation"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "resetPassword",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"5c8e68e0b2@emailwww.pro\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/auth/resend-otp/reset-password",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"resend-otp",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verifyPwdOtp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"5c8e68e0b2@emailwww.pro\",\r\n    \"otp\": \"828789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/auth/verify-otp/reset-password",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"verify-otp",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "changePassword",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "password_token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjVjOGU2OGUwYjJAZW1haWx3d3cucHJvIiwiaWF0IjoxNzU0NjUyOTU2LCJleHAiOjE3NTQ2NTM1NTZ9.ZXJFfhP8wNhN5Y48b4v4ZmBCexR4v0_FOzeJnDRnBm4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"5c8e68e0b2@emailwww.pro\",\r\n    \"newPassword\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/auth/change-password",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"change-password"
 							]
 						}
 					},

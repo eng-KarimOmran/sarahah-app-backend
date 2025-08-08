@@ -18,10 +18,6 @@ const schema = new Schema(
       type: Boolean,
       default: false,
     },
-    is2FA: {
-      type: Boolean,
-      default: false,
-    },
     role: {
       type: String,
       enum: ["user", "admin"],

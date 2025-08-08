@@ -2,7 +2,7 @@ import createError from "../utility/createError.js";
 
 const handelGlobalValidation = (schema) => {
   return async (req, res, next) => {
-    const data = { ...req.body, ...req.params, ...req.query };
+    const data = { ...req.body, ...req.params, ...req.query, ...req.headers };
     const { error, value } = schema
       .unknown(true)
       .validate(data, { abortEarly: false });

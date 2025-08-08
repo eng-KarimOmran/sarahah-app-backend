@@ -8,7 +8,7 @@ import otpModel from "../../DB/models/otp.model.js";
 const sendOtp = async ({ username = "user", email, typeOtp }) => {
   const otp = generateOtp();
   const hashOtp = await hashText(otp);
-  const subject = typeOtp;
+  const subject = typeOtp?.split("-")?.join(" ") + " code";
   const expiresAt = Date.now() + 2 * 60 * 1000;
 
   await deleteMany(otpModel, { email, typeOtp });
@@ -17,7 +17,7 @@ const sendOtp = async ({ username = "user", email, typeOtp }) => {
   const html = generateEmailTemplate({
     username,
     otp,
-    subject: typeOtp + " code",
+    subject,
   });
 
   const transporter = nodemailer.createTransport({

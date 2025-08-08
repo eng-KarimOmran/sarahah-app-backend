@@ -1,24 +1,30 @@
 import jwt from "jsonwebtoken";
-
+import createError from "./createError.js";
+export const TOKEN_TYPES = {
+  ACCESS_TOKEN: "email-confirmation",
+  REFRESH_TOKEN: "reset-password",
+  PASSWORD_TOKEN: "passwordToken",
+};
+Object.freeze(TOKEN_TYPES);
 export const generateToken = ({ data, typeToken }) => {
   let tokenSettings;
   switch (typeToken) {
-    case "accessToken":
+    case TOKEN_TYPES.ACCESS_TOKEN:
       tokenSettings = {
         secretKey: process.env.ACCESS_TOKEN_SECRET,
         expiresIn: "5m",
       };
       break;
-    case "refreshToken":
+    case TOKEN_TYPES.REFRESH_TOKEN:
       tokenSettings = {
-        secretKey: process.env.ACCESS_TOKEN_SECRET,
-        expiresIn: "5m",
+        secretKey: process.env.REFRESH_TOKEN_SECRET,
+        expiresIn: "7d",
       };
       break;
-    case "passwordToken":
+    case TOKEN_TYPES.PASSWORD_TOKEN:
       tokenSettings = {
         secretKey: process.env.PASSWORD_TOKEN_SECRET,
-        expiresIn: "15m",
+        expiresIn: "10m",
       };
       break;
     default:
@@ -31,17 +37,25 @@ export const generateToken = ({ data, typeToken }) => {
   return token;
 };
 
-export const decryptToken = ({ token, secretKey }) => {
+export const decryptToken = ({ token, typeToken }) => {
   try {
+    let secretKey;
+    switch (typeToken) {
+      case TOKEN_TYPES.ACCESS_TOKEN:
+        secretKey = process.env.ACCESS_TOKEN_SECRET;
+        break;
+      case TOKEN_TYPES.REFRESH_TOKEN:
+        secretKey = process.env.REFRESH_TOKEN_SECRET;
+        break;
+      case TOKEN_TYPES.PASSWORD_TOKEN:
+        secretKey = process.env.PASSWORD_TOKEN_SECRET;
+        break;
+      default:
+        throw new Error("Invalid token type");
+    }
     const decoded = jwt.verify(token, secretKey);
-    return {
-      success: true,
-      payload: decoded,
-    };
+    return { data: decoded };
   } catch (err) {
-    return {
-      success: false,
-      error: err.message,
-    };
+    throw createError({ message: err.message });
   }
 };

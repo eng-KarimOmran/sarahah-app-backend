@@ -3,6 +3,8 @@ import * as authService from "./auth.service.js";
 import handelGlobalValidation from "../../Middlewares/handelGlobalValidation.js";
 import * as authValidation from "./auth.validation.js";
 import findUser from "../../Middlewares/findUser.js";
+import handelVerifyOtp from "../../Middlewares/auth/handelVerifyOtp.js";
+import handleResendOtp from "../../Middlewares/auth/handelResendOtp.js";
 const router = Router();
 
 router.post(
@@ -20,24 +22,19 @@ router.post(
 );
 
 router.post(
-  "/reset-password",
-  handelGlobalValidation(authValidation.resetPasswordValidation),
-  findUser(),
-  authService.resetPassword
-);
-
-router.post(
-  "/resend-otp",
-  handelGlobalValidation(authValidation.resendOtp),
-  findUser(),
-  authService.resendOtp
-);
-
-router.post(
-  "/verify-otp",
+  "/verify-otp/:typeOtp",
   handelGlobalValidation(authValidation.verifyOtp),
   findUser(),
+  handelVerifyOtp,
   authService.verifyOtp
+);
+
+router.post(
+  "/resend-otp/:typeOtp",
+  handelGlobalValidation(authValidation.resendOtp),
+  findUser(),
+  handleResendOtp,
+  authService.resendOtp
 );
 
 router.post(

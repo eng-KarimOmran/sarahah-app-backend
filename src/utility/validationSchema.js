@@ -1,4 +1,5 @@
 import joi from "joi";
+import { OTP_TYPES } from "../DB/models/otp.model.js";
 
 export const userSchema = {
   fullName: joi.string().min(2).messages({
@@ -33,11 +34,10 @@ export const authSchema = {
 
   typeOtp: joi
     .string()
-    .valid("Email confirmation", "Reset password", "Two factor authentication")
+    .valid(...Object.values(OTP_TYPES))
     .required()
     .messages({
-      "any.only":
-        "Invalid OTP type. Must be one of: Email confirmation, Reset password, or Two factor authentication.",
+      "any.only": `Invalid OTP type. Must be one of: ${Object.values(OTP_TYPES)}`,
       "any.required": "OTP type is required.",
     }),
 
