@@ -43,7 +43,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"802ac547e1@emailwww.pro\",\r\n    \"password\": \"12345678\"\r\n}",
+							"raw": "{\r\n    \"email\": \"5c8e68e0b2@emailwww.pro\",\r\n    \"password\": \"123456789\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -185,7 +185,7 @@
 				{
 					"name": "changePassword",
 					"request": {
-						"method": "POST",
+						"method": "PATCH",
 						"header": [
 							{
 								"key": "password_token",
@@ -210,6 +210,30 @@
 							"path": [
 								"auth",
 								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "accessToken",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "refresh_token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODk1Y2RlNzBjYTI0M2Q5NGUzZGEyNjYiLCJpYXQiOjE3NTQ2NTQwODEsImV4cCI6MTc1NTI1ODg4MX0.ujiTdRDIBJ7Nbw97cB7bDOiBMCEDJ-ckZEvWyPDISZk",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/auth/access-token",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"access-token"
 							]
 						}
 					},

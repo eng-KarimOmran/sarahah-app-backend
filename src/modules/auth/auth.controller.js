@@ -37,10 +37,16 @@ router.post(
   authService.resendOtp
 );
 
-router.post(
+router.patch(
   "/change-password",
   handelGlobalValidation(authValidation.changePasswordValidation),
   findUser(),
   authService.changePassword
+);
+
+router.get(
+  "/access-token",
+  handelGlobalValidation(authValidation.getAccessTokenValidation),
+  authService.accessToken
 );
 export default router;

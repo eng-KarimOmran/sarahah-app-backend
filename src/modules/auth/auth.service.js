@@ -58,12 +58,12 @@ export const login = async (req, res, next) => {
 
   const accessToken = generateToken({
     data: { userId: req.user._id },
-    typeToken: "accessToken",
+    typeToken: TOKEN_TYPES.ACCESS_TOKEN,
   });
 
   const refreshToken = generateToken({
     data: { userId: req.user._id },
-    typeToken: "refreshToken",
+    typeToken: TOKEN_TYPES.REFRESH_TOKEN,
   });
 
   return createSuccess(res, {
@@ -155,5 +155,23 @@ export const changePassword = async (req, res, next) => {
   return createSuccess(res, {
     message: "Password changed successfully.",
     status: 200,
+  });
+};
+
+export const accessToken = async (req, res, next) => {
+  const { refresh_token } = req.headers;
+
+  const data = decryptToken({
+    token: refresh_token,
+    typeToken: TOKEN_TYPES.REFRESH_TOKEN,
+  });
+
+  const accessToken = generateToken({
+    data: { userId: data.userId },
+    typeToken: TOKEN_TYPES.ACCESS_TOKEN,
+  });
+
+  return createSuccess(res, {
+    accessToken,
   });
 };
