@@ -122,10 +122,10 @@ export const resendOtp = async (req, res, next) => {
 
 export const changePassword = async (req, res, next) => {
   const { newPassword, email } = req.body;
-  const { password_token } = req.headers;
+  const { authorization } = req.headers;
 
   const data = decryptToken({
-    token: password_token,
+    token: authorization,
     typeToken: TOKEN_TYPES.PASSWORD_TOKEN,
   });
 

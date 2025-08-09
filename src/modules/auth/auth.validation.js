@@ -30,7 +30,7 @@ export const verifyOtp = joi.object({
 export const changePasswordValidation = joi.object({
   email: userSchema.email.required(),
   newPassword: userSchema.password.required(),
-  password_token: authSchema.token,
+  authorization: authSchema.token,
 });
 
 export const getAccessTokenValidation = joi.object({

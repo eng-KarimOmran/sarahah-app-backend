@@ -53,8 +53,8 @@ export const decryptToken = ({ token, typeToken }) => {
       default:
         throw new Error("Invalid token type");
     }
-    const decoded = jwt.verify(token, secretKey);
-    return { data: decoded };
+    const data = jwt.verify(token, secretKey);
+    return { ...data };
   } catch (err) {
     throw createError({ message: err.message });
   }
