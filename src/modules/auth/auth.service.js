@@ -1,7 +1,13 @@
 import changePasswordModel from "../../DB/models/changePassword.model.js";
 import { OTP_TYPES } from "../../DB/models/otp.model.js";
 import userModel from "../../DB/models/user.model.js";
-import { create, deleteMany, findOne, updateOne } from "../../DB/servicesDB.js";
+import {
+  create,
+  deleteMany,
+  findById,
+  findOne,
+  updateOne,
+} from "../../DB/servicesDB.js";
 import createError from "../../utility/createError.js";
 import createSuccess from "../../utility/createSuccess.js";
 import { compareText, hashText } from "../../utility/encryption.js";
@@ -20,18 +26,15 @@ export const signup = async (req, res, next) => {
   const user = await create(userModel, {
     fullName,
     email,
-    password: hashPassword,
+    password: {
+      value: hashPassword,
+    },
   });
 
   const info = await sendOtp({
     username: fullName,
     email,
     typeOtp: OTP_TYPES.EMAIL_CONFIRMATION,
-  });
-
-  const accessToken = generateToken({
-    data: { userId: user._id },
-    typeToken: TOKEN_TYPES.ACCESS_TOKEN,
   });
 
   const refreshToken = generateToken({
@@ -42,7 +45,6 @@ export const signup = async (req, res, next) => {
   return createSuccess(res, {
     message: "Registration successful",
     status: 201,
-    accessToken,
     refreshToken,
   });
 };
@@ -50,16 +52,11 @@ export const signup = async (req, res, next) => {
 export const login = async (req, res, next) => {
   const { password } = req.body;
 
-  const isMatch = await compareText(password, req.user.password);
+  const isMatch = await compareText(password, req.user.password.value);
 
   if (!isMatch) {
     return next(createError({ message: "Password is wrong", status: 400 }));
   }
-
-  const accessToken = generateToken({
-    data: { userId: req.user._id },
-    typeToken: TOKEN_TYPES.ACCESS_TOKEN,
-  });
 
   const refreshToken = generateToken({
     data: { userId: req.user._id },
@@ -68,7 +65,6 @@ export const login = async (req, res, next) => {
 
   return createSuccess(res, {
     status: 200,
-    accessToken,
     refreshToken,
   });
 };
@@ -149,7 +145,10 @@ export const changePassword = async (req, res, next) => {
   await updateOne(
     userModel,
     { email },
-    { password: hashPassword, isEmailConfirmed: true }
+    {
+      password: { value: hashPassword, pwdChangedAt: Date.now() },
+      isEmailConfirmed: true,
+    }
   );
 
   return createSuccess(res, {
@@ -159,15 +158,29 @@ export const changePassword = async (req, res, next) => {
 };
 
 export const accessToken = async (req, res, next) => {
-  const { refresh_token } = req.headers;
+  const { authorization } = req.headers;
 
-  const data = decryptToken({
-    token: refresh_token,
+  const { userId, iat } = decryptToken({
+    token: authorization,
     typeToken: TOKEN_TYPES.REFRESH_TOKEN,
   });
 
+  const user = await findById(userModel, userId);
+
+  if (!user) {
+    return next(createError({ message: "user not found", status: 404 }));
+  }
+
+  const pwdChangedAt = parseInt(
+    new Date(user.password.pwdChangedAt).getTime() / 1000
+  );
+
+  if (iat < pwdChangedAt) {
+    return next(createError({ message: "Refresh Token is invalid" }));
+  }
+
   const accessToken = generateToken({
-    data: { userId: data.userId },
+    data: { userId },
     typeToken: TOKEN_TYPES.ACCESS_TOKEN,
   });
 

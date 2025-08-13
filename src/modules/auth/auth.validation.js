@@ -34,5 +34,5 @@ export const changePasswordValidation = joi.object({
 });
 
 export const getAccessTokenValidation = joi.object({
-  refresh_token: authSchema.token,
+  authorization: authSchema.token,
 });

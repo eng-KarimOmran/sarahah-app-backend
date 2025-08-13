@@ -12,6 +12,10 @@ const schema = new Schema(
       unique: true,
     },
     password: {
+      value: { type: String, required: true },
+      pwdChangedAt: { type: Date, default: Date.now() },
+    },
+    imgProfile: {
       type: String,
     },
     isEmailConfirmed: {

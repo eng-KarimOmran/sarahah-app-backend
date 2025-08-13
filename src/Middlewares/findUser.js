@@ -4,7 +4,7 @@ import createError from "../utility/createError.js";
 
 const findUser = (shouldExist = true) => {
   return async (req, res, next) => {
-    const userId = req.params?.userId;
+    const userId = req.params?.userId || req.userId;
     const email = req.body?.email;
     let user = {};
 
