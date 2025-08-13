@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"fullName\": \"Kareem Omran\",\r\n    \"email\": \"5c8e68e0b2@emailwww.pro\",\r\n    \"password\": \"12345678\"\r\n}",
+							"raw": "{\r\n    \"fullName\": \"saad hamam\",\r\n    \"email\": \"a2e48208e4@emailwww.pro\",\r\n    \"password\": \"12345678\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -43,7 +43,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"5c8e68e0b2@emailwww.pro\",\r\n    \"password\": \"123456789\"\r\n}",
+							"raw": "{\r\n    \"email\": \"0aacfa851e@emailwww.pro\",\r\n    \"password\": \"123456789\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -58,34 +58,6 @@
 							"path": [
 								"auth",
 								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "emailConfirmation",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"5c8e68e0b2@emailwww.pro\",\r\n    \"otp\": \"955068\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{host}}/auth/verify-otp/email-confirmation",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"auth",
-								"verify-otp",
-								"email-confirmation"
 							]
 						}
 					},
@@ -127,13 +99,41 @@
 					"response": []
 				},
 				{
+					"name": "emailConfirmation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"5c8e68e0b2@emailwww.pro\",\r\n    \"otp\": \"955068\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/auth/verify-otp/email-confirmation",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"verify-otp",
+								"email-confirmation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "resetPassword",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"5c8e68e0b2@emailwww.pro\"\r\n}",
+							"raw": "{\r\n    \"email\": \"a2e48208e4@emailwww.pro\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -161,7 +161,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"5c8e68e0b2@emailwww.pro\",\r\n    \"otp\": \"828789\"\r\n}",
+							"raw": "{\r\n    \"email\": \"a2e48208e4@emailwww.pro\",\r\n    \"otp\": \"729168\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -188,14 +188,14 @@
 						"method": "PATCH",
 						"header": [
 							{
-								"key": "password_token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjVjOGU2OGUwYjJAZW1haWx3d3cucHJvIiwiaWF0IjoxNzU0NjUyOTU2LCJleHAiOjE3NTQ2NTM1NTZ9.ZXJFfhP8wNhN5Y48b4v4ZmBCexR4v0_FOzeJnDRnBm4",
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImEyZTQ4MjA4ZTRAZW1haWx3d3cucHJvIiwiaWF0IjoxNzU0OTA0MzQ3LCJleHAiOjE3NTQ5MDQ5NDd9.admzl8XNyH6tIDB16k8fpEYlSTJwlxvtpUvR2wEzZ08",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"5c8e68e0b2@emailwww.pro\",\r\n    \"newPassword\": \"123456789\"\r\n}",
+							"raw": "{\r\n    \"email\": \"0aacfa851e@emailwww.pro\",\r\n    \"newPassword\": \"123456789\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -221,8 +221,8 @@
 						"method": "GET",
 						"header": [
 							{
-								"key": "refresh_token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODk1Y2RlNzBjYTI0M2Q5NGUzZGEyNjYiLCJpYXQiOjE3NTQ2NTQwODEsImV4cCI6MTc1NTI1ODg4MX0.ujiTdRDIBJ7Nbw97cB7bDOiBMCEDJ-ckZEvWyPDISZk",
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODk3NDIyOWNlNjU1NDhkYjBlNGIwOWUiLCJpYXQiOjE3NTQ5MDYwMTgsImV4cCI6MTc1NTUxMDgxOH0.FUByS9iiOQRVNaM8rgDA86jEZLp5hMo_ku_gnEGGHkQ",
 								"type": "text"
 							}
 						],
@@ -234,6 +234,192 @@
 							"path": [
 								"auth",
 								"access-token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "uploadImg",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODk5YjQ2MjJmNTI2ZmNiZmNkYzQ0OWEiLCJpYXQiOjE3NTQ5MDM4MTAsImV4cCI6MTc1NTUwODYxMH0.YjFEqnOYJAKloOHym-rZYh1ENa-oDjHHElQlo5fIXnw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/D:/🎬 Media/🖼️ Pictures/🖼️ Wallpapers/night-4702174.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/user/upload-img",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"upload-img"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "shareProfile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODk1Y2RlNzBjYTI0M2Q5NGUzZGEyNjYiLCJpYXQiOjE3NTQ4OTkwNDgsImV4cCI6MTc1NDg5OTM0OH0.G6sZDwA0eXpD7jDfsssPNQLaAdcIITs1TJJSOmdAgG8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/user/share-profile",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"share-profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProfile",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/user/profile/6895cde70ca243d94e3da266",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"profile",
+								"6895cde70ca243d94e3da266"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "changePassword",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODk3NDIyOWNlNjU1NDhkYjBlNGIwOWUiLCJpYXQiOjE3NTQ5MDUzNDEsImV4cCI6MTc1NDkwNTY0MX0._DKccUukws2EoOqK4YEkmhgiJ3TecPnr2pELnmRaR2M",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"oldPassword\": \"12345678\",\r\n    \"newPassword\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/user/change-password",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "changeEmail",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODk3NDIyOWNlNjU1NDhkYjBlNGIwOWUiLCJpYXQiOjE3NTQ5MDYwMjcsImV4cCI6MTc1NDkwNjMyN30.KQBRwXcueI9yamaxr4LlaHSY7MLsRO05ejPyYawldTQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"newEmail\": \"4cafa52ad9@emailwww.pro\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/user/change-email",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"change-email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "changeName",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODk3NDIyOWNlNjU1NDhkYjBlNGIwOWUiLCJpYXQiOjE3NTQ5MDY0MDMsImV4cCI6MTc1NDkwNjcwM30.PGNjdTwh7E9SmZmPRuWccRodI45gn24JQYJlaUZGT5A",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"newFullName\": \"al homsany gad\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/user/change-name",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"change-name"
 							]
 						}
 					},
