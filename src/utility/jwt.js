@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import createError from "./createError.js";
-import { createJwtId } from "./generateCode.js";
+import { createJti } from "./generateCode.js";
 
 export const tokenTypes = {
   accessToken: "accessToken",
@@ -8,7 +8,7 @@ export const tokenTypes = {
   passwordToken: "passwordToken",
 };
 
-export const createToken = ({ tokenType, data, jwtid = createJwtId() }) => {
+export const createToken = ({ tokenType, data, jti = createJti() }) => {
   let config = {};
 
   switch (tokenType) {
@@ -34,7 +34,7 @@ export const createToken = ({ tokenType, data, jwtid = createJwtId() }) => {
   }
 
   const { privateKey, expiresIn } = config;
-  return jwt.sign(data, privateKey, { expiresIn, jwtid });
+  return jwt.sign(data, privateKey, { expiresIn, jwtid: jti });
 };
 
 export const verifyToken = ({ token, tokenType }) => {

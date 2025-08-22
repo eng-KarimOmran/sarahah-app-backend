@@ -1,5 +1,5 @@
 import joi from "joi";
-import { auth, user } from "../../utility/validationSchemas.js";
+import { auth , user } from "../../utility/validationSchemas.js";
 
 export const globalValidateUser = joi.object({
   authorization: auth.token,

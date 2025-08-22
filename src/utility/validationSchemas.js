@@ -83,3 +83,16 @@ export const auth = {
       "any.required": "Token is required",
     }),
 };
+
+export const ObjectId = joi
+  .string()
+  .regex(/^[0-9a-fA-F]{24}$/)
+  .required()
+  .messages({
+    "string.pattern.base": "ObjectId must be a valid ObjectId",
+    "string.empty": "ObjectId is required",
+  });
+
+export const message = joi.string().required().messages({
+  "string.empty": "message is required",
+});

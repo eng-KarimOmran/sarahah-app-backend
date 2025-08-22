@@ -9,7 +9,7 @@ import {
   oneWayEncryption,
   towWayEncryption,
 } from "../../utility/encryption.js";
-import { createJwtId } from "../../utility/generateCode.js";
+import { createJti } from "../../utility/generateCode.js";
 import { createToken, tokenTypes } from "../../utility/jwt.js";
 import sendOtp from "../../utility/otp/sendOtp.js";
 
@@ -35,7 +35,7 @@ export const signup = async (req, res, next) => {
     otpType: otpTypes.confirmEmail,
   });
 
-  const jwtid = createJwtId();
+  const jwtid = createJti();
 
   const refreshToken = createToken({
     data: { userId: user._id },
@@ -69,7 +69,7 @@ export const login = async (req, res, next) => {
   }
 
   await updateOne(userModel, { _id: user._id }, { deleteAt: null });
-  const jwtid = createJwtId();
+  const jwtid = createJti();
 
   const refreshToken = createToken({
     data: { userId: user._id },
@@ -225,12 +225,12 @@ export const getAccessToken = async (req, res, next) => {
 
 export const logout = async (req, res, next) => {
   const { logoutType } = req.params;
-  const jwtid = req.jwtid;
+  const jti = req.jti;
   const user = req.user;
   switch (logoutType) {
     case "device":
       await create(invalidTokenModel, {
-        jti: jwtid,
+        jti,
         exp: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
       });
       break;

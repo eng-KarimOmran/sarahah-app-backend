@@ -5,7 +5,7 @@ export const createOtp = () => {
   return otp;
 };
 
-export const createJwtId = () => {
+export const createJti = () => {
   const id = nanoid();
   return id;
 };

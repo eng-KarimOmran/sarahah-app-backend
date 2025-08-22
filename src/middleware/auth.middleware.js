@@ -31,7 +31,7 @@ const authMiddleware = (tokenType = tokenTypes.accessToken) => {
     }
 
     req.user = user;
-    req.jwtid = decoded.jti;
+    req.jti = decoded.jti;
     return next();
   };
 };

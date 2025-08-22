@@ -8,7 +8,7 @@ const globalValidateHandler = (schema) => {
       ...req.query,
       authorization: req.headers.authorization,
     };
-
+    
     const { error, value } = schema
       .unknown(true)
       .validate(data, { abortEarly: false });
