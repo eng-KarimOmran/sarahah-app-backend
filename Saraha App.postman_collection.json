@@ -1,0 +1,605 @@
+{
+	"info": {
+		"_postman_id": "8d288260-e64a-43c3-b4ce-1356ec4b6f83",
+		"name": "Saraha App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40938527"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "sign up",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json()\r",
+									"pm.environment.set(\"refreshToken\",jsonData.refreshToken)\r",
+									"pm.environment.set(\"accessToken\",jsonData.accessToken)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\": \"karim omran\",\r\n    \"email\": \"6f14733bc8@emailwww.pro\",\r\n    \"phone\":\"01016169042\",\r\n    \"password\": \"12345678\",\r\n    \"birthDate\":\"06/08/2004\",\r\n    \"gender\":\"male\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/auth/signup",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json()\r",
+									"pm.environment.set(\"refreshToken\",jsonData.refreshToken)\r",
+									"pm.environment.set(\"accessToken\",jsonData.accessToken)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"d909252f37@emailwww.pro\",\r\n    \"password\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/auth/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "emailConfirmation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"d909252f37@emailwww.pro\",\r\n    \"otp\": \"343680\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/auth/verify-otp/confirm-email",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"verify-otp",
+								"confirm-email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "resendEmailOtp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"cc7c9eaf37@emailwww.pro\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/auth/resend-otp/confirm-email",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"resend-otp",
+								"confirm-email"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "resetPassword",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"6f14733bc8@emailwww.pro\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/auth/resend-otp/reset-password",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"resend-otp",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verifyPwdOtp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"6f14733bc8@emailwww.pro\",\r\n    \"otp\": \"308384\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/auth/verify-otp/reset-password",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"verify-otp",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "changePassword",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OGEzODM1MTQ5NjVlZDk5OGY1MzA2ZmYiLCJpYXQiOjE3NTU1NTEyNDcsImV4cCI6MTc1NTU1MjE0NywianRpIjoiYkp0R0ZXMlpEcWxGbTlxWnZsX2dBIn0.mlyQE15oKiSxXLZQEPwUbIL8iCX3si1SzWxxpcrU7Lg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"newPassword\": \"1234567899\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/auth/change-password",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "accessToken",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"pm.environment.set(\"accessToken\", jsonData.accessToken);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"packages": {},
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{refreshToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/auth/access-token",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"access-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logoutDevice",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/auth/logout/device",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"logout",
+								"device"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logoutAllDevice",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/auth/logout/all-device",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"logout",
+								"all-device"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "uploadImg",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/D:/🎬 Media/🖼️ Pictures/🖼️ Wallpapers/canva-HAWYN4LZTZY.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/user/upload-img",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"upload-img"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "shareProfile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/user/share-profile",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"share-profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProfile",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/user/profile/68a383514965ed998f5306ff",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"profile",
+								"68a383514965ed998f5306ff"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "changePassword",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"oldPassword\": \"1234567899\",\r\n    \"newPassword\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/user/change-password",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "changeEmail",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"newEmail\": \"d909252f37@emailwww.pro\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/user/change-email",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"change-email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "changeData",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\":\"Kareem Omran\",\r\n    \"gender\":\"male\",\r\n    \"birthDate\":\"06/05/2007\",\r\n    \"phone\":\"01516168745\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/user/change-data",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"change-data"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getMyData",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/user/my-Data",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"my-Data"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteMyAccount",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/user/delete-my-account",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"delete-my-account"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://localhost:3000"
+		}
+	]
+}
